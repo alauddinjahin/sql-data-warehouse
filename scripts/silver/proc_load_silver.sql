@@ -18,6 +18,7 @@ Usage Example:
 ===============================================================================
 */
 
+
 CREATE OR ALTER PROCEDURE silver.load_silver AS
 BEGIN
     DECLARE @start_time DATETIME, @end_time DATETIME, @batch_start_time DATETIME, @batch_end_time DATETIME; 
@@ -53,12 +54,12 @@ BEGIN
 			CASE 
 				WHEN UPPER(TRIM(cst_marital_status)) = 'S' THEN 'Single'
 				WHEN UPPER(TRIM(cst_marital_status)) = 'M' THEN 'Married'
-				ELSE 'n/a'
+				ELSE 'N/A'
 			END AS cst_marital_status, -- Normalize marital status values to readable format
 			CASE 
 				WHEN UPPER(TRIM(cst_gndr)) = 'F' THEN 'Female'
 				WHEN UPPER(TRIM(cst_gndr)) = 'M' THEN 'Male'
-				ELSE 'n/a'
+				ELSE 'N/A'
 			END AS cst_gndr, -- Normalize gender values to readable format
 			cst_create_date
 		FROM (
@@ -99,7 +100,7 @@ BEGIN
 				WHEN UPPER(TRIM(prd_line)) = 'R' THEN 'Road'
 				WHEN UPPER(TRIM(prd_line)) = 'S' THEN 'Other Sales'
 				WHEN UPPER(TRIM(prd_line)) = 'T' THEN 'Touring'
-				ELSE 'n/a'
+				ELSE 'N/A'
 			END AS prd_line, -- Map product line codes to descriptive values
 			CAST(prd_start_dt AS DATE) AS prd_start_dt,
 			DATEADD(day, -1, LEAD(prd_start_dt) OVER (PARTITION BY prd_key ORDER BY prd_start_dt)) AS prd_end_dt
@@ -178,7 +179,7 @@ BEGIN
 			CASE
 				WHEN UPPER(TRIM(gen)) IN ('F', 'FEMALE') THEN 'Female'
 				WHEN UPPER(TRIM(gen)) IN ('M', 'MALE') THEN 'Male'
-				ELSE 'n/a'
+				ELSE 'N/A'
 			END AS gen -- Normalize gender values and handle unknown cases
 		FROM bronze.erp_cust_az12;
 	    SET @end_time = GETDATE();
@@ -203,7 +204,7 @@ BEGIN
 			CASE
 				WHEN TRIM(cntry) = 'DE' THEN 'Germany'
 				WHEN TRIM(cntry) IN ('US', 'USA') THEN 'United States'
-				WHEN TRIM(cntry) = '' OR cntry IS NULL THEN 'n/a'
+				WHEN TRIM(cntry) = '' OR cntry IS NULL THEN 'N/A'
 				ELSE TRIM(cntry)
 			END AS cntry -- Normalize and Handle missing or blank country codes
 		FROM bronze.erp_loc_a101;
