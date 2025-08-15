@@ -8,7 +8,7 @@ This document outlines the naming conventions used for schemas, tables, views, c
 2. [Table Naming Conventions](#table-naming-conventions)
    - [Bronze Rules](#bronze-rules)
    - [Silver Rules](#silver-rules)
-   - [Golden Rules](#gold-rules)
+   - [Golden Rules](#golden-rules)
 3. [Column Naming Conventions](#column-naming-conventions)
    - [Surrogate Keys](#surrogate-keys)
    - [Technical Columns](#technical-columns)
