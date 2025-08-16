@@ -53,7 +53,7 @@ Develop a modern data warehouse using SQL Server to consolidate sales data, enab
 
 ### 📊 BI: Analytics & Reporting (Data Analytics)
 
-[View PowerBI Product Sales Dashboard](docs/powerbi-warehouse.pdf)
+[![View PowerBI Product Sales Dashboard](docs/pw-bi.png)](docs/powerbi-warehouse.pdf)
 
 
 
